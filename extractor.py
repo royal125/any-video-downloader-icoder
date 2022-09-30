@@ -1,6 +1,7 @@
 import os
 import json
 
+
 def extract_format_data(format_data):
     extension = format_data["ext"]
     format_name = format_data["format"]
@@ -10,9 +11,10 @@ def extract_format_data(format_data):
         "format_name": format_name,
         "url": url
     }
-        
+
+
 def extract_video_data_from_url(url):
-    command = f'youtube-dl "{url}" -j'
+    command = f'youtube-dl "{url}" -j --no-playlist'
     output = os.popen(command).read()
     video_data = json.loads(output)
     title = video_data["title"]
